@@ -56,6 +56,8 @@ export default function Forms() {
 
     return (
         <div className='flex flex-col border rounded-2xl md:p-11 p-5 gap-5 max-w-full md:m-11 m-5'>
+
+
             <div className='w-[8em] h-[8em]'>
                 <IoLogoVimeo size={100} color="#1ab7ea" className="m-auto mt-4" />
             </div>
