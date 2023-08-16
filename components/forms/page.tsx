@@ -2,6 +2,7 @@
 import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { Montserrat } from 'next/font/google'
+import Image from 'next/image';
 
 const monserrat = Montserrat({
     weight: "400",
@@ -15,6 +16,7 @@ interface Inputs {
 }
 
 export default function Forms() {
+
     const {
         register,
         handleSubmit,
@@ -23,7 +25,16 @@ export default function Forms() {
     } = useForm<Inputs>();
 
     const App = {
-        name: "doks"
+        name: "company name"
+    }
+
+    const iconsSrc = {
+        facebook: "/assets/icons/facebook_icons/f_logo_RGB-Blue_72.png",
+        nameFb: "facebook",
+        google: "/assets/icons/google_icon/gmail.png",
+        nameG: "google",
+        github: "/assets/icons/github_icons/github.png",
+        nameGit: "github"
     }
 
     // block below is for the functionality of watch() method
@@ -36,9 +47,42 @@ export default function Forms() {
     return (
         <div className='flex flex-col border rounded-2xl p-11 gap-5 w-full m-11'>
             <div className='p-3'>
-                <h1 className={`${monserrat.className} text-3xl font-medium`}>Create your account</h1>
-                <p>to continue to {App.name}</p>
+                <h1 className={`${monserrat.className} text-4xl font-medium mb-1`}>Create your account</h1>
+                <p>to continue to &ldquo;{App.name}&rdquo; </p>
             </div>
+
+            <div className=' p-3 flex justify-between gap-2'>
+
+                <button type='button' className='rounded-2xl bg-slate-900 w-full p-3 flex justify-center  hover:bg-slate-600 transition duration-300'>
+                    <Image
+                        src={iconsSrc.facebook}
+                        alt={iconsSrc.nameFb}
+                        width={24}
+                        height={24}
+                    />
+                </button>
+
+                <button type='button' className='rounded-2xl bg-slate-900 w-full p-3 flex justify-center  hover:bg-slate-600 transition duration-300'>
+                    <Image
+                        src={iconsSrc.github}
+                        alt={iconsSrc.nameGit}
+                        width={24}
+                        height={24}
+
+                    />
+                </button>
+
+                <button type='button' className='rounded-2xl bg-slate-900 w-full p-3 flex justify-center  hover:bg-slate-600 transition duration-300'>
+                    <Image
+                        src={iconsSrc.google}
+                        alt={iconsSrc.nameG}
+                        width={24}
+                        height={24}
+                    />
+                </button>
+
+            </div>
+
 
             <div className="flex justify-center items-center">
                 <hr className='w-full'></hr>
