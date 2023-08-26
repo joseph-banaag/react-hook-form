@@ -46,16 +46,16 @@ export default function Forms() {
     // block below is for the functionality of watch() method
     console.log(watch("username"));
     console.log(watch("password"))
-    console.log("Errors: ", errors)
+    // console.log("Errors: ", errors)
 
     const onSubmit: SubmitHandler<Inputs> = (data: any) => console.log(data); // the return can also be alert: alert(JSON.stringify(data))
 
 
-
+    //TODO: implement error message to display error to the user when the condition is not met
 
 
     return (
-        <div className='flex flex-col border rounded-2xl md:p-11 p-5 gap-5 max-w-full md:m-11 m-5'>
+        <div className='flex flex-col border-2 rounded-2xl md:p-11 p-5 gap-5 max-w-full md:m-11 m-5'>
 
 
             <div className='w-[8em] h-[8em]'>
@@ -104,12 +104,14 @@ export default function Forms() {
                 <p className='px-3'>or</p>
                 <hr className='w-full'></hr>
             </div>
+
+
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3 '>
 
                 <div className='flex flex-col gap-1 mb-3'>
-                    <input {...register("username", { required: { value: true, message: "Can't leave empty." }, minLength: { value: 8, message: "Min length of 8" }, maxLength: { value: 25, message: "Max length 25" } })} placeholder='Username' className='p-2 rounded-md text-black text-sm w-full' />
+                    <input {...register("username", { required: { value: true, message: "Can't leave empty." }, minLength: { value: 8, message: "Min length of 8" }, maxLength: { value: 25, message: "Max length 25" } })} placeholder='Username' className='p-2 rounded-md text-black text-sm w-full' required />
 
-                    <ErrorMessage
+                    {/* <ErrorMessage
                         errors={errors}
                         name="username"
                         render={({ messages }: any) => {
@@ -120,12 +122,12 @@ export default function Forms() {
                                 ))
                                 : null;
                         }}
-                    />
+                    /> */}
 
                 </div>
 
                 <div className='flex flex-col gap-1 mb-3'>
-                    <input type='password' {...register("password", { pattern: { value: /(?=\w{8,18})(?=\D*\d)/, message: "Password must be at least 8 characters." } })} placeholder='Password' className='p-2 rounded-md text-black text-sm w-full' />
+                    <input type='password' autoComplete="on" {...register("password", { pattern: { value: /(?=\w{8,18})(?=\D*\d)/, message: "Password must be at least 8 characters." } })} placeholder='Password' className='p-2 rounded-md text-black text-sm w-full' required />
                     {/* {errors.username && } */}
                 </div>
 
